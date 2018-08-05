@@ -15,6 +15,8 @@ import {NgxAirtableModule} from 'ngx-airtable';
 import { HttpModule } from '@angular/http';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +29,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     NgxAirtableModule.forRoot({ apiKey: 'keyjQ62V3uBfAWHEv' }),
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,20 +1,84 @@
+<script src="node_modules/chart.js/src/chart.js"></script>
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>
+      Dashboard
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card>
+    <ion-item> 
+        <ion-avatar item-start>
+        <ion-icon name="cash" style="font-size: 50px;"></ion-icon>
+      </ion-avatar>
+      <h2>Total Pendapatan</h2>
+      <p>Rp000000</p>
+    </ion-item>
+    </ion-card>
 
-  <button ion-button (click)="scanBarcode()">Button</button>
-  <p>{{code}}</p>
+    <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon style="font-size: 50px;" name="cart"></ion-icon>
+      </ion-avatar>
+      <h2>Total Pengeluaran</h2>
+      <p>Rp000000</p>
+    </ion-item>
+  </ion-card>
+
+    <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon large style="font-size: 50px;" name="add"></ion-icon>
+      </ion-avatar>
+      <h2>Total Keuntungan</h2>
+      <p>Rp000000</p>
+    </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            Arus Pendapatan
+          </ion-card-header>
+      <ion-item>
+        <canvas baseChart width="400" height="400"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType">
+        </canvas>
+      </ion-item>
+    </ion-card>
+
+
+    <ion-card>
+        <ion-card-header>
+            Penjualan berdasarkan kategori
+          </ion-card-header>
+        <ion-item>
+          <canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"
+          ></canvas>
+        </ion-item>
+      </ion-card>
+
+
+      <ion-card>
+          <ion-card-header>
+              Pengeluaran berdasarkan kategori
+            </ion-card-header>
+          <ion-item>
+              <canvas baseChart
+              [datasets]="radarChartData"
+              [labels]="radarChartLabels"
+              [chartType]="radarChartType"></canvas>
+          </ion-item>
+        </ion-card>
+
 </ion-content>

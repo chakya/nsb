@@ -1,11 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Produk
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <button style="width:100%" ion-button color="light"><ion-icon name="barcode"> Pindai Barcode</ion-icon></button>
+  <ion-list>
 
+    <ion-card *ngFor="let item of productData">
+      <ion-card-header>
+        {{ item['fields']['Nama Barang'] }}
+      </ion-card-header>
+      <ion-card-content>
+          <ion-grid>
+              <ion-row style=" border-bottom: 0.5px solid grey;">
+                <ion-col col-6>Harga</ion-col>
+                <ion-col col-6 style="  text-align: right;">{{ item['fields']['Harga'] | currency  : 'Rp'  : 'symbol' }}</ion-col>
+              </ion-row>
+              <ion-row style=" border-bottom: .5px solid grey;">
+                  <ion-col col-6>Stok</ion-col>
+                  <ion-col col-6 style="  text-align: right;">{{ item['fields']['Stok'] }}</ion-col>
+              </ion-row>
+              <div style="margin-top:5px">
+              <span *ngFor="let kat of item['fields']['Kategori']"> <ion-badge color="light"> {{kat}}</ion-badge></span>
+            </div>
+            </ion-grid>
+
+
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>
